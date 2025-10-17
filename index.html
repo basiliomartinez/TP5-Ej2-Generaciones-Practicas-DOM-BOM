@@ -1,31 +1,325 @@
 <!DOCTYPE html>
-<html lang="es" data-bs-theme="dark">
+<html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Practica de conceptos del DOM" />
     <meta name="author" content="Basilio Martinez" />
-<!-- Bootswatch: Journal (Bootstrap 5) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/journal/bootstrap.min.css">
+    <title>TP5 DOM — Generaciones</title>
 
+    <!-- Bootswatch: Journal (Bootstrap 5) -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/journal/bootstrap.min.css"
     />
-
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <!-- Tu CSS -->
     <link rel="stylesheet" href="./css/style.css" />
-    <title>TP5 DOM-Generaciones</title>
   </head>
-<body>
-    <header></header>
-    <main></main>
-    <footer></footer>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <!-- Izquierda: icono + título -->
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="index.html"
+          >
+            <i class="bi bi-people-fill fs-4"></i>
+            <span class="fw-bold">Generaciones</span>
+          </a>
+
+          <!-- Botón hamburguesa -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarMain"
+            aria-controls="navbarMain"
+            aria-expanded="false"
+            aria-label="Mostrar navegación"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- Derecha: SOLO el botón -->
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="navbarMain"
+          >
+           <a class="btn btn-light text-primary fw-semibold" href="#form-persona">
+  ¿De qué generación eres?
+</a>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container py-4">
+      <div class="row g-4">
+        <!-- ===== Columna izquierda: Formulario ===== -->
+        <section class="col-12 col-lg-6">
+          <div class="card shadow-sm">
+            <div class="card-header">
+              <h2 class="h5 mb-0 d-flex align-items-center gap-2">
+                <i class="bi bi-person-plus-fill"></i> Crear Persona
+              </h2>
+            </div>
+
+            <div class="card-body">
+              <form id="form-persona" class="form-persona">
+                <div class="row g-3">
+                  <!-- Nombre -->
+                  <div class="col-12">
+                    <label for="inp-nombre" class="form-label">Nombre</label>
+                    <input
+                      id="inp-nombre"
+                      name="nombre"
+                      type="text"
+                      class="form-control"
+                      placeholder="Ej: Basilio"
+                      minlength="2"
+                      pattern="[A-Za-zÁÉÍÓÚÑáéíóúñ\s]{2,}"
+                      title="Solo letras y espacios, mínimo 2 caracteres"
+                      required
+                    />
+                  </div>
+
+                  <!-- Edad -->
+                  <div class="col-6">
+                    <label for="inp-edad" class="form-label">Edad</label>
+                    <input
+                      id="inp-edad"
+                      name="edad"
+                      type="number"
+                      class="form-control"
+                      placeholder="Ej: 25"
+                      min="0"
+                      max="120"
+                      required
+                    />
+                  </div>
+
+                  <!-- DNI -->
+                  <div class="col-6">
+                    <label for="inp-dni" class="form-label">DNI</label>
+                    <input
+                      id="inp-dni"
+                      name="dni"
+                      type="text"
+                      class="form-control"
+                      placeholder="Ej: 12345678"
+                      pattern="[0-9]{7,9}"
+                      title="Solo números, 7 a 9 dígitos"
+                      required
+                    />
+                  </div>
+
+                  <!-- Sexo -->
+                  <div class="col-6">
+                    <label for="inp-sexo" class="form-label">Sexo</label>
+                    <select
+                      id="inp-sexo"
+                      name="sexo"
+                      class="form-select"
+                      required
+                    >
+                      <option value="" selected disabled>Elegir...</option>
+                      <option value="H">H — Hombre</option>
+                      <option value="M">M — Mujer</option>
+                    </select>
+                  </div>
+
+                  <!-- Peso -->
+                  <div class="col-6">
+                    <label for="inp-peso" class="form-label">Peso (kg)</label>
+                    <input
+                      id="inp-peso"
+                      name="peso"
+                      type="number"
+                      class="form-control"
+                      placeholder="Ej: 72.5"
+                      min="0"
+                      step="0.1"
+                      required
+                    />
+                  </div>
+
+                  <!-- Altura -->
+                  <div class="col-6">
+                    <label for="inp-altura" class="form-label"
+                      >Altura (cm)</label
+                    >
+                    <input
+                      id="inp-altura"
+                      name="altura"
+                      type="number"
+                      class="form-control"
+                      placeholder="Ej: 175"
+                      min="30"
+                      max="250"
+                      required
+                    />
+                  </div>
+
+                  <!-- Año de nacimiento -->
+                  <div class="col-6">
+                    <label for="inp-anio" class="form-label"
+                      >Año de nacimiento</label
+                    >
+                    <input
+                      id="inp-anio"
+                      name="anioNacimiento"
+                      type="number"
+                      class="form-control"
+                      placeholder="Ej: 1995"
+                      min="1930"
+                      max="2025"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <!-- Acciones -->
+                <div class="d-flex flex-wrap gap-2 mt-4">
+                  <button type="submit" class="btn btn-primary btn-crear">
+                    <i class="bi bi-person-check-fill me-1"></i> Crear persona
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-generacion"
+                    disabled
+                  >
+                    <i class="bi bi-stars me-1"></i> Mostrar generación
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-mayor"
+                    disabled
+                  >
+                    <i class="bi bi-shield-check me-1"></i> ¿Mayor de edad?
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary btn-datos"
+                    disabled
+                  >
+                    <i class="bi bi-card-text me-1"></i> Mostrar datos
+                  </button>
+
+                  <!-- Crear otra persona -->
+                  <button
+                    type="button"
+                    class="btn btn-warning btn-reset"
+                    disabled
+                  >
+                    <i class="bi bi-arrow-counterclockwise me-1"></i> Crear otra
+                    persona
+                  </button>
+                </div>
+              </form>
+
+              <!-- Área de alertas -->
+              <div
+                class="alert alert-info mt-3 d-none alerta"
+                role="alert"
+              ></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== Columna derecha: Resultado / Vista previa ===== -->
+        <aside class="col-12 col-lg-6">
+          <div class="card h-100 shadow-sm">
+            <div class="card-header">
+              <h2 class="h5 mb-0 d-flex align-items-center gap-2">
+                <i class="bi bi-person-badge-fill"></i> Persona creada
+              </h2>
+            </div>
+
+            <div class="card-body">
+              <!-- Estado vacío -->
+              <div class="text-center text-secondary estado-vacio">
+                <i class="bi bi-box2-heart fs-1 d-block mb-2"></i>
+                <p class="mb-0">
+                  Todavía no hay una persona creada. Completá el formulario y
+                  presioná <strong>Crear persona</strong>.
+                </p>
+              </div>
+
+              <!-- Detalle (oculto hasta crear) -->
+              <div class="d-none detalle">
+                <ul class="list-group mb-3">
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">Nombre</span>
+                    <span class="out-nombre">—</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">Edad</span>
+                    <span class="out-edad">—</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">DNI</span>
+                    <span class="out-dni">—</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">Sexo</span>
+                    <span class="out-sexo">—</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">Peso</span>
+                    <span class="out-peso">—</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">Altura</span>
+                    <span class="out-altura">—</span>
+                  </li>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="fw-semibold">Año de nacimiento</span>
+                    <span class="out-anio">—</span>
+                  </li>
+                </ul>
+
+                <div class="d-grid d-sm-flex gap-2">
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-generacion-2"
+                  >
+                    <i class="bi bi-stars me-1"></i> Mostrar generación
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-primary btn-mayor-2"
+                  >
+                    <i class="bi bi-shield-check me-1"></i> ¿Mayor de edad?
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="py-4 mt-4 border-top bg-light">
+      <div class="container text-center">
+        <small class="text-secondary">
+          <i class="bi bi-award-fill"></i> Basilio Martinez — TP5 DOM ·
+          Ejercicio 2 (Generaciones)
+        </small>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS (bundle con Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./js/Ejercicio2.js"></script>
-</body>
+  </body>
 </html>
-  
