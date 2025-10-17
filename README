@@ -1,0 +1,32 @@
+# 📌 Descripción del tema
+
+App **“Generaciones”**: el usuario completa un **formulario** para crear un objeto **Persona** (nombre, edad, DNI, sexo, peso, altura, año de nacimiento). Luego puede:
+
+* **Mostrar generación** (según el año de nacimiento).
+* Ver si **es mayor de edad**.
+* **Mostrar datos** completos.
+* **Crear otra persona** sin recargar la página.
+
+# 🛠️ Herramientas
+
+* HTML5 + **Bootswatch Journal** (Bootstrap 5)
+* **Bootstrap Icons**
+* JavaScript (DOM + eventos, **POO** con clase `Persona` y propiedades privadas)
+
+# 🔗 Repo / PR
+
+PR: [https://github.com/basiliomartinez/TP5-DOM-EJ2-generaciones/pull/1](https://github.com/basiliomartinez/TP5-DOM-EJ2-generaciones/pull/1)
+
+# ▶️ Cómo usar en VS Code
+
+1. **Clonar**
+   `git clone https://github.com/basiliomartinez/TP5-DOM-EJ2-generaciones.git`
+   `cd TP5-DOM-EJ2-generaciones`
+2. **Abrir** la carpeta en **VS Code**.
+3. (Opcional) Instalar la extensión **Live Server**.
+4. **Ejecutar**: abrir `index.html` y elegir **“Open with Live Server”** (o abrir el archivo en el navegador).
+5. **Probar**: Click en **“¿De qué generación eres?”** → completar el formulario → **Crear persona** → usar los botones de acciones.
+
+# 👤 Autor
+
+Basilio Martinez
